@@ -1,6 +1,6 @@
 import express from 'express';
 import connectDB from "./config/db.js";
-import mongoose from 'mongoose'
+import userRoutes from './routes/user.route.js'
 import dotenv from "dotenv";
 dotenv.config();
 const PORT = process.env.PORT || 8000;
@@ -12,3 +12,5 @@ connectDB();
 
 //run my back-end server
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+
+app.use("/api/user", userRoutes); //use to middleware
