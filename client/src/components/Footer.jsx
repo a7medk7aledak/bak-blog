@@ -1,6 +1,7 @@
 import { Footer } from "flowbite-react";
 import { Link } from "react-router-dom";
 import { BsFacebook, BsInstagram, BsTwitter, BsDribbble } from "react-icons/bs";
+
 export const FooterCom = () => {
   return (
     <Footer container className="">

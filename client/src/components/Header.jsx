@@ -3,9 +3,14 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineSearch } from "react-icons/ai";
-import { FaMoon } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
+import { toggleTheme } from "../redux/theme/themeSlice";
+import { useSelector, useDispatch } from "react-redux";
 
 export const Header = () => {
+  const { theme } = useSelector((state) => state.theme);
+  const dispatch = useDispatch();
+
   const path = useLocation().pathname;
   return (
     <Navbar className="border-b-2">
@@ -30,8 +35,13 @@ export const Header = () => {
         <AiOutlineSearch />
       </Button>
       <div className="flex gap-2 md:order-2">
-        <Button className="w-12 h-10 hidden sm:inline" color="gray" pill>
-          <FaMoon />
+        <Button
+          className="w-12 h-10 hidden sm:inline"
+          color="gray"
+          pill
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "light" ? <FaSun /> : <FaMoon />}
         </Button>
         <Link to="/sign-in">
           <Button gradientDuoTone="purpleToBlue">Sign In</Button>
