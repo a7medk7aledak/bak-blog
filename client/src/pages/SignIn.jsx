@@ -48,7 +48,7 @@ export const SignIn = () => {
               />
             </div>
             <Button gradientDuoTone="purpleToBlue" type="submit">
-              sign up
+              sign in
             </Button>
             <OAuth />
           </form>
