@@ -1,5 +1,4 @@
 import { Button } from "flowbite-react";
-import React from "react";
 import { AiFillGoogleCircle } from "react-icons/ai";
 
 export const OAuth = () => {
