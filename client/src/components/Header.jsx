@@ -5,7 +5,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { FaMoon, FaSun } from "react-icons/fa";
 import { toggleTheme } from "../redux/theme/themeSlice";
 import { useSelector, useDispatch } from "react-redux";
-
+import { Avatar, Dropdown } from "flowbite-react";
 export const Header = () => {
   const { theme } = useSelector((state) => state.theme);
   const dispatch = useDispatch();
