@@ -1,15 +1,15 @@
-import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
+import { Alert, Button, Label, Spinner, TextInput } from "flowbite-react";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
 import {
   signInStart,
   signInSuccess,
   signInFailure,
-} from '../redux/user/userSlice';
-import OAuth from '../components/OAuth';
+} from "../redux/user/userSlice";
+import OAuth from "../components/OAuth";
 
-export default function SignIn() {
+export const SignIn = () => {
   const [formData, setFormData] = useState({});
   const { loading, error: errorMessage } = useSelector((state) => state.user);
   const dispatch = useDispatch();
@@ -20,13 +20,13 @@ export default function SignIn() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.email || !formData.password) {
-      return dispatch(signInFailure('Please fill all the fields'));
+      return dispatch(signInFailure("Please fill all the fields"));
     }
     try {
       dispatch(signInStart());
-      const res = await fetch('/api/auth/signin', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const res = await fetch("/api/auth/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
       const data = await res.json();
@@ -36,7 +36,7 @@ export default function SignIn() {
 
       if (res.ok) {
         dispatch(signInSuccess(data));
-        navigate('/');
+        navigate("/");
       }
     } catch (error) {
       dispatch(signInFailure(error.message));
@@ -81,17 +81,17 @@ export default function SignIn() {
               />
             </div>
             <Button
-              gradientDuoTone='purpleToPink'
-              type='submit'
+              gradientDuoTone="purpleToPink"
+              type="submit"
               disabled={loading}
             >
               {loading ? (
                 <>
-                  <Spinner size='sm' />
-                  <span className='pl-3'>Loading...</span>
+                  <Spinner size="sm" />
+                  <span className="pl-3">Loading...</span>
                 </>
               ) : (
-                'Sign In'
+                "Sign In"
               )}
             </Button>
             <OAuth />
@@ -103,7 +103,7 @@ export default function SignIn() {
             </Link>
           </div>
           {errorMessage && (
-            <Alert className='mt-5' color='failure'>
+            <Alert className="mt-5" color="failure">
               {errorMessage}
             </Alert>
           )}
