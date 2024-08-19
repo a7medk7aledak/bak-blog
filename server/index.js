@@ -16,6 +16,8 @@ connectDB();
 
 //run my back-end server
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
+import cors from "cors";
+app.use(cors());
 
 //routes and middleware
 app.use("/api/user", userRoutes); 
