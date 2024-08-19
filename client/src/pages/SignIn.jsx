@@ -80,19 +80,8 @@ export default function SignIn() {
                 onChange={handleChange}
               />
             </div>
-            <Button
-              gradientDuoTone='purpleToPink'
-              type='submit'
-              disabled={loading}
-            >
-              {loading ? (
-                <>
-                  <Spinner size='sm' />
-                  <span className='pl-3'>Loading...</span>
-                </>
-              ) : (
-                'Sign In'
-              )}
+            <Button gradientDuoTone="purpleToBlue" type="submit">
+              sign IN
             </Button>
             <OAuth />
           </form>
