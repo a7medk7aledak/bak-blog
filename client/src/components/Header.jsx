@@ -1,4 +1,4 @@
-import { Button, Navbar, TextInput } from "flowbite-react";
+import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { CiSearch } from "react-icons/ci";
 import { AiOutlineSearch } from "react-icons/ai";
