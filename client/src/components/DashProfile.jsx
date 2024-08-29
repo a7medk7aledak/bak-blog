@@ -9,7 +9,7 @@ export const DashProfile = () => {
       <form className="flex flex-col gap-4">
         <div className="relative w-32 h-32 self-center cursor-pointer shadow-md overflow-hidden rounded-full">
           <img
-            src=""
+            src={currentUser.profilePicture}
             alt="user"
             className={`rounded-full w-full h-full object-cover border-8 border-[lightgray] 
             }`}
@@ -20,13 +20,13 @@ export const DashProfile = () => {
           type="text"
           id="username"
           placeholder="username"
-          defaultValue={"test"}
+          defaultValue={currentUser.username}
         />
         <TextInput
           type="email"
           id="email"
           placeholder="email"
-          defaultValue={"test"}
+          defaultValue={currentUser.email}
         />
         <TextInput type="password" id="password" placeholder="password" />
         <Button type="submit" gradientDuoTone="purpleToBlue" outline>
