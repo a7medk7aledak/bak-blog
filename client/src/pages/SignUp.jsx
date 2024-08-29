@@ -12,6 +12,7 @@ export const SignUp = () => {
     setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
   };
   const handleSubmit = async (e) => {
+    //to dont make page refresh
     e.preventDefault();
 
     if (!formData.username || !formData.email || !formData.password) {
@@ -21,11 +22,11 @@ export const SignUp = () => {
     try {
       setLoading(true);
       setErrorMessage(null);
-
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      // to handel post req 
+      const res = await fetch("/api/auth/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(formData), // convert json to string to send it 
       });
 
       if (!res.ok) {
