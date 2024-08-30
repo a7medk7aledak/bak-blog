@@ -19,10 +19,12 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CircularProgressbar } from "react-circular-progressbar";
 
 export const DashProfile = () => {
+  const navigate = useNavigate();
+
   const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
@@ -130,6 +132,7 @@ export const DashProfile = () => {
       const data = await res.json();
       if (!res.ok) {
         dispatch(deleteUserFailure(data.message));
+        navigate("/");
       } else {
         dispatch(deleteUserSuccess(data));
       }
@@ -148,6 +151,7 @@ export const DashProfile = () => {
         console.log(data.message);
       } else {
         dispatch(signoutSuccess());
+        navigate("/");
       }
     } catch (error) {
       console.log(error.message);
