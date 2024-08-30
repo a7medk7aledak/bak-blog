@@ -3,6 +3,7 @@ import connectDB from "./config/db.js";
 import userRoutes from './routes/user.route.js';
 import authRoutes from "./routes/auth.routes.js";
 import dotenv from "dotenv";
+import cookieParser from 'cookie-parser';
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
@@ -18,7 +19,7 @@ connectDB();
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 import cors from "cors";
 app.use(cors());
-
+app.use(cookieParser());
 //routes and middleware
 app.use("/api/user", userRoutes); 
 app.use("/api/auth", authRoutes);
