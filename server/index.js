@@ -1,9 +1,11 @@
 import express from 'express';
 import connectDB from "./config/db.js";
 import userRoutes from './routes/user.route.js';
-import authRoutes from "./routes/auth.routes.js";
+import authRoutes from "./routes/auth.route.js";
 import dotenv from "dotenv";
 import cookieParser from 'cookie-parser';
+import postRoutes from "./routes/post.route.js";
+import commentRoutes from "./routes/comment.route.js";
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
@@ -23,7 +25,8 @@ app.use(cookieParser());
 //routes and middleware
 app.use("/api/user", userRoutes); 
 app.use("/api/auth", authRoutes);
-
+app.use("/api/post", postRoutes);
+app.use("/api/comment", commentRoutes);
 //middleware to make error is butter
 app.use((err, req, res, next) => {
     //error must have status code if not have include 500
