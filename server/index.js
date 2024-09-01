@@ -6,7 +6,6 @@ import dotenv from "dotenv";
 import cookieParser from 'cookie-parser';
 import postRoutes from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js";
-import path from "path"
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
