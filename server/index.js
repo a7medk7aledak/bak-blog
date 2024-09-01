@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import cookieParser from 'cookie-parser';
 import postRoutes from "./routes/post.route.js";
 import commentRoutes from "./routes/comment.route.js";
+import path from "path"
 dotenv.config();
 const PORT = process.env.PORT || 8000;
 
@@ -16,7 +17,7 @@ app.use(express.json());
 
 // Connect Database
 connectDB();
-
+const __dirname = path.resolve();
 //run my back-end server
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 import cors from "cors";
@@ -27,6 +28,13 @@ app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/post", postRoutes);
 app.use("/api/comment", commentRoutes);
+
+//client files to deploy
+app.use(express.static(path.join(__dirname, '/client/dist')));
+
+app.get('*',(req,res) => {
+  res.sendFile(path.join(__dirname,'client','dist','index.html'))
+})
 //middleware to make error is butter
 app.use((err, req, res, next) => {
     //error must have status code if not have include 500
