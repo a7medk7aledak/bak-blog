@@ -2,7 +2,7 @@ import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css"; // اختر النمط الذي تفضله
+import "highlight.js/styles/github.css";
 import {
   getDownloadURL,
   getStorage,
@@ -25,7 +25,8 @@ const modules = {
     [{ header: [1, 2, false] }],
     ["bold", "italic", "underline", "strike"],
     [{ list: "ordered" }, { list: "bullet" }],
-    ["code-block"], // إضافة زر لتحرير الأكواد
+    ["code-block"],
+    [{ direction: "rtl" }, { direction: "ltr" }], // RTL and LTR buttons
     ["link", "image"],
     ["clean"],
   ],
@@ -39,9 +40,10 @@ const formats = [
   "strike",
   "list",
   "bullet",
-  "code-block", // إضافة دعم تحرير الأكواد
+  "code-block",
   "link",
   "image",
+  "direction", // Enable direction format for both RTL and LTR
 ];
 
 export const CreatePost = () => {
@@ -135,10 +137,17 @@ export const CreatePost = () => {
               setFormData({ ...formData, category: e.target.value })
             }
           >
-            <option value="uncategorized">Select a category</option>
-            <option value="javascript">JavaScript</option>
-            <option value="reactjs">React.js</option>
-            <option value="nextjs">Next.js</option>
+            <option value="#uncategorized">Select a category</option>
+            <option value="#Programming">Programming</option>
+            <option value="#WebDevelopment">WebDevelopment</option>
+            <option value="#ReactJS">ReactJS</option>
+            <option value="#NodeJS">NodeJS</option>
+            <option value="#Flutter">Flutter</option>
+            <option value="#Django">Django</option>
+            <option value="#nextjs">Next.js</option>
+            <option value="#JavaScript">JavaScript</option>
+            <option value="#CSS">CSS</option>
+            <option value="#GitHub">GitHub</option>
           </Select>
         </div>
         <div className="flex gap-4 items-center justify-between border-4 border-teal-500 border-dotted p-3">
@@ -178,7 +187,7 @@ export const CreatePost = () => {
         <ReactQuill
           theme="snow"
           placeholder="Write something..."
-          className="h-72 mb-12"
+          className="h-96 mb-12"
           required
           modules={modules}
           formats={formats}
@@ -198,4 +207,3 @@ export const CreatePost = () => {
     </div>
   );
 };
-

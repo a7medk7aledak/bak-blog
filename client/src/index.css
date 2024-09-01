@@ -8,9 +8,13 @@ body{
 }
 
 
-.ql-editor{
-    font-size: 1.05rem;
-}
+
+
+
+
+
+
+
 .post-content p {
     margin-bottom: 0.5rem;
   }
@@ -40,3 +44,50 @@ body{
   .dark .post-content a {
     color: red;
   }
+  .ql-syntax {
+    background-color: #0a0a0a;  /* Light gray background for the code block */
+    color: #f1efef;  /* Text color */
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;  /* Horizontal scroll for long code */
+    font-family: 'Courier New', Courier, monospace; /* Monospace font */
+    font-size: 0.9rem; /* Slightly smaller font size */
+    direction: ltr; 
+  }
+  
+
+
+  /* Base editor styles */
+.ql-editor {
+  font-family: 'Tajawal', sans-serif; /* Example Arabic font for RTL */
+  font-size: 1.2rem;
+  line-height: 1.8;
+}
+
+/* Styles for RTL */
+.ql-editor[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+/* Styles for LTR */
+.ql-editor[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}
+
+/* Code block styling (LTR by default) */
+.post-content {
+  line-height: 1.8;
+  font-size: 1.1rem;
+}
+
+.post-content[dir="rtl"] {
+  direction: rtl;
+  text-align: right;
+}
+
+.post-content[dir="ltr"] {
+  direction: ltr;
+  text-align: left;
+}

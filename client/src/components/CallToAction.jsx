@@ -10,17 +10,13 @@ export const CallToAction = () => {
           gradientDuoTone="purpleToPink"
           className="rounded-tl-xl rounded-bl-none"
         >
-          <a
-            href="https://bak-technology.web.app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="https://bak-technology.web.app/" target="_blank" rel="">
             bak-tech
           </a>
         </Button>
       </div>
-      <div className="p-7 flex-1">
-        <img src="" />
+      <div className="p-7 flex-1 ">
+        <img src="../../public/Capture.JPG" className="rounded-md" />
       </div>
     </div>
   );
