@@ -1,6 +1,8 @@
 import { Alert, Button, FileInput, Select, TextInput } from "flowbite-react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css"; // اختر النمط الذي تفضله
 import {
   getDownloadURL,
   getStorage,
@@ -12,6 +14,35 @@ import { useState } from "react";
 import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { useNavigate } from "react-router-dom";
+
+hljs.configure({ languages: ["javascript", "python", "ruby", "html"] });
+
+const modules = {
+  syntax: {
+    highlight: (text) => hljs.highlightAuto(text).value,
+  },
+  toolbar: [
+    [{ header: [1, 2, false] }],
+    ["bold", "italic", "underline", "strike"],
+    [{ list: "ordered" }, { list: "bullet" }],
+    ["code-block"], // إضافة زر لتحرير الأكواد
+    ["link", "image"],
+    ["clean"],
+  ],
+};
+
+const formats = [
+  "header",
+  "bold",
+  "italic",
+  "underline",
+  "strike",
+  "list",
+  "bullet",
+  "code-block", // إضافة دعم تحرير الأكواد
+  "link",
+  "image",
+];
 
 export const CreatePost = () => {
   const [file, setFile] = useState(null);
@@ -58,6 +89,7 @@ export const CreatePost = () => {
       console.log(error);
     }
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -82,6 +114,7 @@ export const CreatePost = () => {
       setPublishError("Something went wrong");
     }
   };
+
   return (
     <div className="p-3 max-w-3xl mx-auto min-h-screen">
       <h1 className="text-center text-3xl my-7 font-semibold">Create a post</h1>
@@ -147,6 +180,8 @@ export const CreatePost = () => {
           placeholder="Write something..."
           className="h-72 mb-12"
           required
+          modules={modules}
+          formats={formats}
           onChange={(value) => {
             setFormData({ ...formData, content: value });
           }}
@@ -163,3 +198,4 @@ export const CreatePost = () => {
     </div>
   );
 };
+
